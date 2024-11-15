@@ -1,0 +1,99 @@
+<div id="content">
+  <div class="container py-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <!-- Success Header -->
+        <div class="text-center mb-5">
+          <div class="display-4 text-success mb-3">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <h2 class="mb-3">Thank You for Your Purchase!</h2>
+          <p class="lead text-muted">Your order has been successfully processed.</p>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <h3 class="h5 mb-0">Order Summary</h3>
+          </div>
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-3">
+              <div class="text-success mr-3">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="flex-grow-1">
+                <h4 class="h6 mb-1">Annual Membership</h4>
+                <p class="text-muted small mb-0">Recurring yearly subscription</p>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center">
+              <div class="text-success mr-3">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="flex-grow-1">
+                <h4 class="h6 mb-1">Event Ticket</h4>
+                <div id="event-details">
+                  <!-- Will be populated by JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Important Notice -->
+        <div class="alert alert-info" role="alert">
+          <h4 class="alert-heading h5"><i class="fas fa-info-circle mr-2"></i>Important Note</h4>
+          <p class="mb-0">Your event ticket confirmation may take up to 2 hours to process. You will receive a separate email confirmation once your RSVP has been completed. Your membership access is available immediately.</p>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="h5 mb-0">Next Steps</h3>
+          </div>
+          <div class="card-body">
+            <ol class="mb-0">
+              <li class="mb-2">Check your email for purchase confirmation</li>
+              <li class="mb-2">Watch for a separate event ticket confirmation email</li>
+              <li>Start exploring your membership benefits</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Return Home -->
+        <div class="text-center mt-4">
+          <a href="/" class="btn btn-primary">Return to Homepage</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get event details from sessionStorage
+      const eventDetails = JSON.parse(sessionStorage.getItem('selectedEventDetails'));
+      if (eventDetails) {
+        const eventDetailsEl = document.getElementById('event-details');
+        const eventDate = new Date(eventDetails.startDate).toLocaleDateString('en-US', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: '2-digit'
+        });
+        
+        eventDetailsEl.innerHTML = `
+          <p class="text-muted small mb-0">
+            ${eventDetails.name}<br>
+            ${eventDate}
+          </p>
+        `;
+      }
+      
+      // Clear sessionStorage since we're done with the flow
+      sessionStorage.removeItem('selectedEventDetails');
+    });
+  </script>
+</div>
