@@ -50,7 +50,8 @@ This project provides a seamless way to combine event ticket purchases with annu
 ```
 
 ## Demo
-See a live demo of the functionality of these templates in a sandbox environment here: https://demo-blakemizelle.nationbuilder.com/event_with_multiple_ticket_levels
+See a live demo of the functionality of these templates in a sandbox environment here:
+https://demo-blakemizelle.nationbuilder.com/event_with_multiple_ticket_levels
 
 
 ## Setup
